@@ -15,8 +15,7 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  -->
-
+   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -31,36 +30,30 @@
   <url>http://tajo.apache.org/</url>
   <name>Tajo Main</name>
   <packaging>pom</packaging>
-
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
   </licenses>
-
   <organization>
     <name>The Apache Software Foundation</name>
     <url>http://www.apache.org/</url>
   </organization>
-
   <issueManagement>
     <system>Jira</system>
     <url>https://issues.apache.org/jira/browse/TAJO</url>
   </issueManagement>
-
   <ciManagement>
     <system>Jenkins</system>
     <url>https://builds.apache.org</url>
   </ciManagement>
-
   <scm>
     <url>https://github.com/apache/tajo.git</url>
     <connection>scm:git:https://github.com/apache/tajo.git</connection>
     <developerConnection>scm:git:https://github.com/apache/tajo.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
-
   <repositories>
     <repository>
       <id>eclipse-jetty</id>
@@ -70,17 +63,15 @@
       </snapshots>
     </repository>
   </repositories>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <tajo.root>${basedir}</tajo.root>
-    <aggregate.report.dir>moduleTestTajo/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir> <!-- aggiunta mia per jacoco-->
-
-    <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version><!-- aggiunta mia per jacoco-->
-
+    <aggregate.report.dir>moduleTestTajo/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
+    <!--  aggiunta mia per jacoco -->
+    <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+    <!--  aggiunta mia per jacoco -->
   </properties>
-
   <modules>
     <module>tajo-maven-plugins</module>
     <module>tajo-project</module>
@@ -106,13 +97,10 @@
     <module>tajo-dist</module>
     <module>moduleTestTajo</module>
   </modules>
-
   <build>
     <pluginManagement>
       <plugins>
-
-
-        <!-- ////////////////////////-->
+        <!--  //////////////////////// -->
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
@@ -126,21 +114,11 @@
             </execution>
           </executions>
         </plugin>
-        <!-- ////////////////////////-->
-
+        <!--  //////////////////////// -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
           <version>2.4</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-report-plugin</artifactId>
-          <version>2.19</version>
-          <configuration>
-            <aggregate>true</aggregate>
-            <argLine>@{argLine} -Xmx2G -Djava.net.preferIPv4Stack=true</argLine><!-- serve a surefire per far partire jacoco-->
-          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -176,7 +154,6 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.5</version>
         </plugin>
-
         <plugin>
           <groupId>org.apache.rat</groupId>
           <artifactId>apache-rat-plugin</artifactId>
@@ -187,15 +164,23 @@
           <artifactId>maven-site-plugin</artifactId>
           <version>3.0</version>
           <dependencies>
-            <dependency><!-- add support for ssh/scp -->
+            <dependency>
+              <!--  add support for ssh/scp  -->
               <groupId>org.apache.maven.wagon</groupId>
               <artifactId>wagon-ssh</artifactId>
               <version>1.0</version>
             </dependency>
+
+            <dependency>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <version>2.19.1</version>
+              <type>maven-plugin</type>
+            </dependency>
           </dependencies>
         </plugin>
-        <!--This plugin's configuration is used to store Eclipse m2e settings only. 
-          It has no influence on the Maven build itself. -->
+        <!-- This plugin's configuration is used to store Eclipse m2e settings only.
+                  It has no influence on the Maven build itself.  -->
         <plugin>
           <groupId>org.eclipse.m2e</groupId>
           <artifactId>lifecycle-mapping</artifactId>
@@ -213,7 +198,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -227,7 +212,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -241,7 +226,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -254,7 +239,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -268,7 +253,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -281,7 +266,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -294,7 +279,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
               </pluginExecutions>
@@ -303,8 +288,32 @@
         </plugin>
       </plugins>
     </pluginManagement>
-
     <plugins>
+      <!--  //////////////////////// -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.5</version>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!--  //////////////////////// -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <aggregate>true</aggregate>
+          <argLine>@{argLine} -Xmx2G -Djava.net.preferIPv4Stack=true</argLine>
+          <!--  serve a surefire per far partire jacoco -->
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
@@ -350,9 +359,8 @@
       </plugin>
     </plugins>
   </build>
-
   <profiles>
-    <!-- User Documentation -->
+    <!--  User Documentation  -->
     <profile>
       <id>userdocs</id>
       <modules>
@@ -362,7 +370,6 @@
         <activeByDefault>false</activeByDefault>
       </activation>
     </profile>
-
     <profile>
       <id>apache-release</id>
       <activation>
@@ -371,10 +378,10 @@
       <build>
         <plugins>
           <!--
-           Create a source-release artifact that contains the fully buildable
-                         project directory source structure. This is the artifact which is
-                         the official subject of any release vote.
-          -->
+                     Create a source-release artifact that contains the fully buildable
+                                   project directory source structure. This is the artifact which is
+                                   the official subject of any release vote.
+                     -->
           <plugin>
             <artifactId>maven-assembly-plugin</artifactId>
             <dependencies>
@@ -407,8 +414,8 @@
             </executions>
           </plugin>
           <!--
-           We want to deploy the artifact to a staging location for perusal
-          -->
+                     We want to deploy the artifact to a staging location for perusal
+                     -->
           <plugin>
             <inherited>true</inherited>
             <groupId>org.apache.maven.plugins</groupId>
@@ -442,8 +449,8 @@
             </executions>
           </plugin>
           <!--
-           We want to sign the artifact, the POM, and all attached artifacts
-          -->
+                     We want to sign the artifact, the POM, and all attached artifacts
+                     -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
@@ -459,10 +466,7 @@
               </execution>
             </executions>
           </plugin>
-
-
-          <!-- ////////////////////////-->
-
+          <!--  //////////////////////// -->
           <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
@@ -475,9 +479,7 @@
               </execution>
             </executions>
           </plugin>
-          <!-- ////////////////////////-->
-
-
+          <!--  //////////////////////// -->
         </plugins>
       </build>
     </profile>
