@@ -19,6 +19,7 @@
 package org.apache.tajo.engine.planner.physical;
 
 import io.netty.util.internal.PlatformDependent;
+import jdk.internal.vm.annotation.Contended;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.tajo.SessionVars;
@@ -33,7 +34,6 @@ import org.apache.tajo.exception.UnsupportedException;
 import org.apache.tajo.tuple.memory.UnSafeTuple;
 import org.apache.tajo.tuple.memory.UnSafeTupleList;
 import org.apache.tajo.util.SizeOf;
-import sun.misc.Contended;
 
 import java.util.Arrays;
 import java.util.Comparator;

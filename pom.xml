@@ -75,6 +75,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <tajo.root>${basedir}</tajo.root>
+    <aggregate.report.dir>moduleTestTajo/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir> <!-- aggiunta mia per jacoco-->
+
+    <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version><!-- aggiunta mia per jacoco-->
+
   </properties>
 
   <modules>
@@ -100,11 +104,30 @@
     <module>tajo-cluster-tests</module>
     <module>tajo-tablespace-example</module>
     <module>tajo-dist</module>
+    <module>moduleTestTajo</module>
   </modules>
 
   <build>
     <pluginManagement>
       <plugins>
+
+
+        <!-- ////////////////////////-->
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.5</version>
+          <executions>
+            <execution>
+              <id>prepare-agent</id>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <!-- ////////////////////////-->
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
@@ -116,6 +139,7 @@
           <version>2.19</version>
           <configuration>
             <aggregate>true</aggregate>
+            <argLine>@{argLine} -Xmx2G -Djava.net.preferIPv4Stack=true</argLine><!-- serve a surefire per far partire jacoco-->
           </configuration>
         </plugin>
         <plugin>
@@ -435,6 +459,25 @@
               </execution>
             </executions>
           </plugin>
+
+
+          <!-- ////////////////////////-->
+
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.5</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- ////////////////////////-->
+
+
         </plugins>
       </build>
     </profile>
