@@ -8,7 +8,6 @@ addons:
     token: 56e1cfde8bfe21f5a8b5d13e39c90f5b9b547eed
 
 install:
-
   # -Dtest=... --> Indica la classe di test da eseguire
   ##- mvn -Dtest=BufferedChannelTest verify -DfailIfNoTests=false sonar:sonar -Pcode-coverage -Dsonar.projectKey=GlaAndry_bookkeeper -Dmaven.test.failure.ignore=true
   ##- mvn verify -DfailIfNoTests=false sonar:sonar -Dsonar.projectKey=GlaAndry_tajo -Dmaven.test.failure.ignore=true -Dhadoop.version=2.7.1
