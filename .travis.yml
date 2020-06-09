@@ -11,4 +11,5 @@ install:
 
   # -Dtest=... --> Indica la classe di test da eseguire
   ##- mvn -Dtest=BufferedChannelTest verify -DfailIfNoTests=false sonar:sonar -Pcode-coverage -Dsonar.projectKey=GlaAndry_bookkeeper -Dmaven.test.failure.ignore=true
-  - mvn verify -DfailIfNoTests=false sonar:sonar -Dsonar.projectKey=GlaAndry_tajo -Dmaven.test.failure.ignore=true -Dhadoop.version=2.7.1
+  ##- mvn verify -DfailIfNoTests=false sonar:sonar -Dsonar.projectKey=GlaAndry_tajo -Dmaven.test.failure.ignore=true -Dhadoop.version=2.7.1
+  - mvn verify -DfailIfNoTests=false -Dhadoop.version=2.7.1 sonar:sonar -Dsonar.projectKey=GlaAndry_tajo
