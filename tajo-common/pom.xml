@@ -67,6 +67,25 @@
       </resource>
     </resources>
     <plugins>
+
+
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.4.11</version>
+        <configuration>
+          <targetClasses>
+            <param>org.apache.tajo.datum.Datum</param>
+          </targetClasses>
+          <targetTests>
+            <param>org.apache.tajo.datum.DatumTest</param>
+          </targetTests>
+        </configuration>
+      </plugin>
+
+
+
+
       <plugin>
       <groupId>org.apache.tajo</groupId>
       <artifactId>tajo-maven-plugins</artifactId>
@@ -98,24 +117,8 @@
           <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.rat</groupId>
-        <artifactId>apache-rat-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <excludes>
-          	<exclude>src/main/resources/META-INF/services/*</exclude>
-            <exclude>src/test/resources/org/apache/tajo/conf/**</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
+
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>

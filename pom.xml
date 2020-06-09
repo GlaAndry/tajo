@@ -127,6 +127,13 @@
           <configuration>
             <source>1.8</source>
             <target>1.8</target>
+
+            <compilerArgs>
+              <arg>-XDignore.symbol.file</arg>
+            </compilerArgs>
+            <fork>true</fork>
+
+
             <encoding>${project.build.sourceEncoding}</encoding>
           </configuration>
         </plugin>
@@ -154,11 +161,7 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.5</version>
         </plugin>
-        <plugin>
-          <groupId>org.apache.rat</groupId>
-          <artifactId>apache-rat-plugin</artifactId>
-          <version>0.8</version>
-        </plugin>
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
@@ -342,21 +345,15 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.rat</groupId>
-        <artifactId>apache-rat-plugin</artifactId>
-        <inherited>false</inherited>
-        <configuration>
-          <excludes>
-            <exclude>.git/**</exclude>
-            <exclude>.gitignore</exclude>
-            <exclude>.idea/**</exclude>
-            <exclude>.reviewboardrc</exclude>
-            <exclude>CHANGES</exclude>
-            <exclude>tajo-docs/src/main/sphinx/**</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
+
+
+
+
+
+
+
+
+
     </plugins>
   </build>
   <profiles>
@@ -483,5 +480,52 @@
         </plugins>
       </build>
     </profile>
+
+    <profile>
+      <id>personalProfile</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+
+
+
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.5</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!--  //////////////////////// -->
+        </plugins>
+      </build>
+    </profile>
   </profiles>
+
+
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.4.11</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>
