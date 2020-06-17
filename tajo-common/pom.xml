@@ -75,10 +75,19 @@
         <version>1.4.11</version>
         <configuration>
           <targetClasses>
-            <param>org.apache.tajo.datum.Datum</param>
+            <param>org.apache.tajo.datum.Float4Datum</param>
+            <param>org.apache.tajo.datum.Int4Datum</param>
+            <param>org.apache.tajo.datum.TextDatum</param>
+            <param>org.apache.tajo.datum.TimeDatum</param>
+
+
           </targetClasses>
           <targetTests>
-            <param>org.apache.tajo.datum.DatumTest</param>
+            <param>org.apache.tajo.datum.DatumFloat4Test</param>
+            <param>org.apache.tajo.datum.DatumInt4Test</param>
+            <param>org.apache.tajo.datum.TextDatumTest</param>
+            <param>org.apache.tajo.datum.TimeDatumTest</param>
+
           </targetTests>
         </configuration>
       </plugin>
