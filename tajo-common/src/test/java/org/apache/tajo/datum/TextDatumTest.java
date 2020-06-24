@@ -61,30 +61,37 @@ public class TextDatumTest {
         try {
             int res = text1.compareTo(text2);
             Assert.assertEquals(resultCompare, res);
-
-            //for coverage
-            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
-            datum2 = DatumFactory.createChar(new byte[]{0, 0, 0});
-            Assert.assertEquals(0, datum1.compareTo(datum2));
-
-            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
-            datum2 = DatumFactory.createBlob(new byte[]{0, 0, 0});
-            Assert.assertEquals(0, datum1.compareTo(datum2));
-
-            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
-            datum2 = DatumFactory.createNullDatum();
-            Assert.assertEquals(-1, datum1.compareTo(datum2));
-
-            try {
-                datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
-                datum2 = DatumFactory.createTime(datum1);
-                datum1.compareTo(datum2);
-            } catch (Exception e) {
-                Assert.assertEquals(IllegalArgumentException.class, e.getClass());
-            }
-
         } catch (Exception e) {
             Assert.assertEquals(resultException, e.getClass());
+        }
+
+        //for coverage
+        datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+        datum2 = DatumFactory.createChar(new byte[]{0, 0, 0});
+        Assert.assertEquals(0, datum1.compareTo(datum2));
+
+        datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+        datum2 = DatumFactory.createBlob(new byte[]{0, 0, 0});
+        Assert.assertEquals(0, datum1.compareTo(datum2));
+
+        datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+        datum2 = DatumFactory.createNullDatum();
+        Assert.assertEquals(-1, datum1.compareTo(datum2));
+
+        try {
+            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+            datum2 = DatumFactory.createTime(datum1);
+            datum1.compareTo(datum2);
+        } catch (Exception e) {
+            Assert.assertEquals(IllegalArgumentException.class, e.getClass());
+        }
+
+        try {
+            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+            datum2 = DatumFactory.createFloat4(1);
+            datum1.compareTo(datum2);
+        } catch (Exception e) {
+            Assert.assertEquals(InvalidOperationException.class, e.getClass());
         }
     }
 
@@ -95,34 +102,41 @@ public class TextDatumTest {
         try {
             Datum equalDat = text1.equalsTo(text2);
             Assert.assertEquals(resultEqualsTo, equalDat.asBool());
-
-            //for coverage
-            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
-            datum2 = DatumFactory.createChar(new byte[]{0, 0, 0});
-            Assert.assertTrue(datum1.equalsTo(datum2).asBool());
-
-            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
-            datum2 = DatumFactory.createBlob(new byte[]{0, 0, 0});
-            Assert.assertTrue(datum1.equalsTo(datum2).asBool());
-
-            try{
-                datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
-                datum2 = DatumFactory.createNullDatum();
-                Assert.assertFalse(datum1.equalsTo(datum2).asBool());
-            } catch (Exception e){
-                Assert.assertEquals(TajoRuntimeException.class, e.getClass());
-            }
-
-            try {
-                datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
-                datum2 = DatumFactory.createTime(datum1);
-                datum1.equalsTo(datum2);
-            } catch (Exception e) {
-                Assert.assertEquals(IllegalArgumentException.class, e.getClass());
-            }
-
         } catch (Exception e) {
             Assert.assertEquals(resultException, e.getClass());
+        }
+
+        //for coverage
+        datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+        datum2 = DatumFactory.createChar(new byte[]{0, 0, 0});
+        Assert.assertTrue(datum1.equalsTo(datum2).asBool());
+
+        datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+        datum2 = DatumFactory.createBlob(new byte[]{0, 0, 0});
+        Assert.assertTrue(datum1.equalsTo(datum2).asBool());
+
+        try{
+            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+            datum2 = DatumFactory.createNullDatum();
+            Assert.assertFalse(datum1.equalsTo(datum2).asBool());
+        } catch (Exception e){
+            Assert.assertEquals(TajoRuntimeException.class, e.getClass());
+        }
+
+        try {
+            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+            datum2 = DatumFactory.createTime(datum1);
+            datum1.equalsTo(datum2);
+        } catch (Exception e) {
+            Assert.assertEquals(IllegalArgumentException.class, e.getClass());
+        }
+
+        try {
+            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+            datum2 = DatumFactory.createFloat4(1);
+            datum1.equalsTo(datum2);
+        } catch (Exception e) {
+            Assert.assertEquals(InvalidOperationException.class, e.getClass());
         }
     }
 
@@ -134,14 +148,14 @@ public class TextDatumTest {
             boolean isEqualToDat = text1.equals(text2);
             Assert.assertEquals(resultEqual, isEqualToDat);
 
-            //for coverage
-            datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
-            datum2 = DatumFactory.createChar(new byte[]{0, 0, 0});
-            Assert.assertFalse(datum1.equals(datum2));
-
         } catch (Exception e) {
             Assert.assertEquals(resultException, e.getClass());
         }
+
+        //for coverage
+        datum1 = DatumFactory.createText(new byte[]{0, 0, 0});
+        datum2 = DatumFactory.createChar(new byte[]{0, 0, 0});
+        Assert.assertFalse(datum1.equals(datum2));
     }
 
     /**
@@ -160,7 +174,7 @@ public class TextDatumTest {
             Assert.assertTrue(datum.asFloat4() == (float) 1);
             Assert.assertTrue(datum.asFloat8() == (double) 1);
             Assert.assertEquals(datum.asChar(), 49); //1 equivale a 49 nella tabella ASCII
-            Assert.assertEquals(datum.asUnicodeChars(), 49); //1 equivale a 49 nella tabella ASCII
+            Assert.assertEquals(datum.asUnicodeChars(), String.valueOf(1).toCharArray()); //1 equivale a 49 nella tabella ASCII
         } catch (Exception e) {
             Assert.assertEquals(TajoRuntimeException.class, e.getClass());
 
@@ -184,6 +198,12 @@ public class TextDatumTest {
     public void asBytesTest(){
         Datum datum = DatumFactory.createText("1"); //prende i valori HTML
         Assert.assertEquals(datum.asByteArray(), datum.asTextBytes());
+    }
+
+    @Test
+    public void toStringTest(){
+        Datum datum = DatumFactory.createText("1"); //prende i valori HTML
+        Assert.assertEquals(String.valueOf(1), datum.toString()); //1 equivale a 49 nella tabella ASCII
     }
 
 }
